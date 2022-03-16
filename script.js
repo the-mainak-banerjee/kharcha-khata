@@ -5,6 +5,7 @@ let addExpense = document.querySelector("#addExpense")
 let updateItem = document.querySelector("#updateItem")
 let showExpense = document.querySelector("#showExpense")
 let saveIndex = document.querySelector("#saveIndex")
+let noItem = document.querySelector("#noItem")
 
 showItem();
 
@@ -92,6 +93,9 @@ function deleteItem(index){
     expenseObj.splice(index,1)
     localStorage.setItem("expense", JSON.stringify(expenseObj))
     showItem();
+    if(showExpense.innerHTML === ""){
+        noItem.classList.remove("hideElement")
+    }
 }
 
 
@@ -106,4 +110,7 @@ function submitForm(evt){
     }
     expenseDesc.value=""
     expenseAmount.value=""
+    noItem.classList.add("hideElement")
+
 }
+
