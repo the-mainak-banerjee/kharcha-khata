@@ -77,3 +77,20 @@ body{
     background-image: linear-gradient(to right, var(--secondary-color), #2bc50d );
     padding: 20px;
 }
+
+.showExpense{
+    border: 2px solid var(--primary-color);
+    border-collapse: collapse;
+    margin: auto;
+    width: 30vw;
+}
+
+td{
+    border: 2px solid var(--primary-color);
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+.expenseDescCol{
+    width: 200px;
+}

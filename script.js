@@ -26,6 +26,7 @@ function storeLocally() {
     localStorage.setItem("expense", JSON.stringify(expenseObj))
 }
 
+
 function showItem() {
     let expenseItem = localStorage.getItem("expense")
 
@@ -38,7 +39,7 @@ function showItem() {
     let allExpenseItem = expenseObj.map((element,index) => {
         return ` <tr>
         <td>${index+1}</td>
-        <td>${element.topic}</td>
+        <td class="expenseDescCol">${element.topic}</td>
         <td>${element.amount}</td>
         <td>Edit</td>
         <td>Delete</td>
