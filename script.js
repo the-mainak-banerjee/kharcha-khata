@@ -54,3 +54,13 @@ function submitForm(evt){
     storeLocally();
     showItem();
 }
+
+
+expenseAmount.addEventListener("input", () => {
+    if(expenseAmount.validity.rangeUnderflow){
+        expenseAmount.setCustomValidity("Yeah Sab Doglapan Hain, Positive Value Add Karo")
+    }
+    else{
+        expenseAmount.setCustomValidity("")
+    }
+})
