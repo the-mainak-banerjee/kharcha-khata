@@ -58,6 +58,12 @@ function showItem() {
     </tr>`
     })
     showExpense.innerHTML = allExpenseItem.join("")
+    if(showExpense.innerHTML === "" || expenseItem === null){
+        noItem.classList.remove("hideElement")
+    }else{
+        noItem.classList.add("hideElement")
+
+    }
     
 }
 
@@ -93,9 +99,6 @@ function deleteItem(index){
     expenseObj.splice(index,1)
     localStorage.setItem("expense", JSON.stringify(expenseObj))
     showItem();
-    if(showExpense.innerHTML === ""){
-        noItem.classList.remove("hideElement")
-    }
 }
 
 
@@ -110,6 +113,5 @@ function submitForm(evt){
     }
     expenseDesc.value=""
     expenseAmount.value=""
-    noItem.classList.add("hideElement")
 }
 
