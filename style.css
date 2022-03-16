@@ -94,3 +94,17 @@ td{
 .expenseDescCol{
     width: 200px;
 }
+
+.editButton, .deleteButton{
+    background-color: var(--background-color);
+    border: none;
+}
+
+.fa-pen-to-square{
+    color: blue;
+    padding-right: 5px;
+}
+
+.fa-trash-can{
+    color: rgb(187, 29, 29);
+}
