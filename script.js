@@ -14,7 +14,7 @@ expenseForm.addEventListener("submit",submitForm)
 
 expenseAmount.addEventListener("input", () => {
     if(expenseAmount.validity.rangeUnderflow){
-        expenseAmount.setCustomValidity("Yeah Sab Doglapan Hain, Positive Value Add Karo Bhai!!!")
+        expenseAmount.setCustomValidity("Yeah Keya Kar Raha Hain Bhai Tu, Positive Value Add Kar Bhai!!!")
     }
     else{
         expenseAmount.setCustomValidity("")
@@ -111,6 +111,5 @@ function submitForm(evt){
     expenseDesc.value=""
     expenseAmount.value=""
     noItem.classList.add("hideElement")
-
 }
 
