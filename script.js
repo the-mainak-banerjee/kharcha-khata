@@ -2,7 +2,9 @@ let expenseForm = document.querySelector("#expenseForm")
 let expenseDesc = document.querySelector("#expenseDesc")
 let expenseAmount = document.querySelector("#expenseAmount")
 let addExpense = document.querySelector("#addExpense")
+let updateItem = document.querySelector("#updateItem")
 let showExpense = document.querySelector("#showExpense")
+let saveIndex = document.querySelector("#saveIndex")
 
 let expenseDetailsArr = []
 
@@ -65,4 +67,26 @@ expenseAmount.addEventListener("input", () => {
     else{
         expenseAmount.setCustomValidity("")
     }
+})
+
+function editItem(index) {
+    let expenseItem = localStorage.getItem("expense")
+    let expenseObj = JSON.parse(expenseItem);
+    saveIndex.value = index;
+    expenseDesc.value = expenseObj[index].topic;
+    expenseAmount.value = expenseObj[index].amount;
+    addExpense.classList.add("hideElement");
+    updateItem.classList.remove("hideElement");
+}
+
+updateItem.addEventListener("click", () => {
+    let expenseItem = localStorage.getItem("expense")
+    let expenseObj = JSON.parse(expenseItem);
+    expenseObj[saveIndex.value].topic = expenseDesc.value;
+    expenseObj[saveIndex.value].amount = expenseAmount.value;
+    localStorage.setItem("expense", JSON.stringify(expenseObj))
+    showItem();
+    addExpense.classList.remove("hideElement");
+    updateItem.classList.add("hideElement");
+
 })
