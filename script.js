@@ -53,6 +53,7 @@ function showItem() {
     
 }
 
+
 function submitForm(evt){
     evt.preventDefault();
     storeLocally();
@@ -68,6 +69,7 @@ expenseAmount.addEventListener("input", () => {
         expenseAmount.setCustomValidity("")
     }
 })
+
 
 function editItem(index) {
     let expenseItem = localStorage.getItem("expense")
@@ -88,5 +90,13 @@ updateItem.addEventListener("click", () => {
     showItem();
     addExpense.classList.remove("hideElement");
     updateItem.classList.add("hideElement");
-
 })
+
+
+function deleteItem(index){
+    let expenseItem = localStorage.getItem("expense")
+    let expenseObj = JSON.parse(expenseItem)
+    expenseObj.splice(index,1)
+    localStorage.setItem("expense", JSON.stringify(expenseObj))
+    showItem();
+}
