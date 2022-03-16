@@ -6,15 +6,22 @@ let updateItem = document.querySelector("#updateItem")
 let showExpense = document.querySelector("#showExpense")
 let saveIndex = document.querySelector("#saveIndex")
 
-let expenseDetailsArr = []
-
 showItem();
 
 
 expenseForm.addEventListener("submit",submitForm)
 
+expenseAmount.addEventListener("input", () => {
+    if(expenseAmount.validity.rangeUnderflow){
+        expenseAmount.setCustomValidity("Yeah Sab Doglapan Hain, Positive Value Add Karo Bhai!!!")
+    }
+    else{
+        expenseAmount.setCustomValidity("")
+    }
+})
+
 function storeLocally() {
-    expenseDetailsArr = {
+    expenseDetails = {
         topic: `${expenseDesc.value}`,
         amount: `${expenseAmount.value}`
     }
@@ -26,7 +33,7 @@ function storeLocally() {
     else{
         expenseObj = JSON.parse(expenseItem)
     }
-    expenseObj.push(expenseDetailsArr)
+    expenseObj.push(expenseDetails)
     localStorage.setItem("expense", JSON.stringify(expenseObj))
 }
 
@@ -54,23 +61,6 @@ function showItem() {
 }
 
 
-function submitForm(evt){
-    evt.preventDefault();
-    storeLocally();
-    showItem();
-}
-
-
-expenseAmount.addEventListener("input", () => {
-    if(expenseAmount.validity.rangeUnderflow){
-        expenseAmount.setCustomValidity("Yeah Sab Doglapan Hain, Positive Value Add Karo")
-    }
-    else{
-        expenseAmount.setCustomValidity("")
-    }
-})
-
-
 function editItem(index) {
     let expenseItem = localStorage.getItem("expense")
     let expenseObj = JSON.parse(expenseItem);
@@ -81,7 +71,8 @@ function editItem(index) {
     updateItem.classList.remove("hideElement");
 }
 
-updateItem.addEventListener("click", () => {
+
+function updateItemList(){
     let expenseItem = localStorage.getItem("expense")
     let expenseObj = JSON.parse(expenseItem);
     expenseObj[saveIndex.value].topic = expenseDesc.value;
@@ -90,8 +81,10 @@ updateItem.addEventListener("click", () => {
     showItem();
     addExpense.classList.remove("hideElement");
     updateItem.classList.add("hideElement");
-})
-
+    expenseDesc.value=""
+    expenseAmount.value=""
+    saveIndex.value= null;
+}
 
 function deleteItem(index){
     let expenseItem = localStorage.getItem("expense")
@@ -99,4 +92,18 @@ function deleteItem(index){
     expenseObj.splice(index,1)
     localStorage.setItem("expense", JSON.stringify(expenseObj))
     showItem();
+}
+
+
+function submitForm(evt){
+    evt.preventDefault();
+    if(saveIndex.value){
+        updateItemList()
+    }
+    else{
+        storeLocally();
+        showItem();
+    }
+    expenseDesc.value=""
+    expenseAmount.value=""
 }
