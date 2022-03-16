@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kharcha Khata</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="heroSection">
@@ -12,12 +13,14 @@
             <h2>Apne Kharche Ko Track Karo, Warna Barbad Ho Jayoge!!</h2>
         </div>
         <div class="formSection">
-            <h3>Add Your Expense List Below</h3>
-            <form action="/#" id="expenseForm">
+            <h3>Add Your Expense Details Below:-</h3>
+            <form action="/#" id="expenseForm" class="expenseForm">
                 <label for="expenseDesc">What You Did?</label>
                 <input type="text" id="expenseDesc" name="title" placeholder="Kharcha Kyun Kiya?" rquired>
                 <label for="expenseAmount">How Much Amound Spend?</label>
                 <input type="number" id="expenseAmount" placeholder="Kitna Kharcha Kiya?" name="expense" min="1" required>
+                <button class="addExpense">Add Expense</button>
+                <button type="button" id="updateItem" class="hideElement">Update Item</button>
             </form>
         </div>
     </div>
@@ -25,7 +28,7 @@
     <div class="expenseList">
         <h2>Expense List</h2>
         <div class="showExpense">
-            
+
         </div>
     </div>
 </body>
