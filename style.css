@@ -171,3 +171,12 @@ td{
 .fa-trash-can{
     color: rgb(187, 29, 29);
 }
+
+.footer{
+    background-color: #afaeae;
+    color: rgb(51, 51, 51);
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    position: static;
+}
