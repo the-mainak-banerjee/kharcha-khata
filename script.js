@@ -6,6 +6,7 @@ let updateItem = document.querySelector("#updateItem")
 let showExpense = document.querySelector("#showExpense")
 let saveIndex = document.querySelector("#saveIndex")
 let noItem = document.querySelector("#noItem")
+let errMsg = document.querySelector("#errorMsg")
 
 showItem();
 
@@ -26,16 +27,23 @@ function storeLocally() {
         topic: `${expenseDesc.value}`,
         amount: `${expenseAmount.value}`
     }
-    let expenseItem = localStorage.getItem("expense")
 
-    if(expenseItem === null){
-        expenseObj = []
+    if(expenseDesc.value.trim() !== ""){
+        let expenseItem = localStorage.getItem("expense")
+    
+        if(expenseItem === null){
+            expenseObj = []
+        }
+        else{
+            expenseObj = JSON.parse(expenseItem)
+        }
+        expenseObj.push(expenseDetails)
+        localStorage.setItem("expense", JSON.stringify(expenseObj))
+        errMsg.classList.add("hideElement")
     }
     else{
-        expenseObj = JSON.parse(expenseItem)
+        errMsg.classList.remove("hideElement")
     }
-    expenseObj.push(expenseDetails)
-    localStorage.setItem("expense", JSON.stringify(expenseObj))
 }
 
 
@@ -62,7 +70,6 @@ function showItem() {
         noItem.classList.remove("hideElement")
     }else{
         noItem.classList.add("hideElement")
-
     }
     
 }

@@ -7,9 +7,6 @@
     <title>Kharcha Khata</title>
     <script src="https://kit.fontawesome.com/8accc9c3ae.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-    </style>
 </head>
 <body>
     <div>
@@ -33,6 +30,7 @@
                 <input type="hidden" id="saveIndex">
                 <label for="expenseDesc">What You Did?</label>
                 <input type="text" id="expenseDesc" name="title" placeholder="Kharcha Kyun Kiya?" required>
+                <p id="errorMsg" class="errorMsg hideElement">Please add a valid value!!</p>
                 <label for="expenseAmount">How Much Amound Spend?</label>
                 <input type="number" id="expenseAmount" placeholder="Kitna Kharcha Kiya?" name="expense" min="1" required>
                 <button class="addExpense" id="addExpense">Add Expense</button>

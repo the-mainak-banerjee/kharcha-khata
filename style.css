@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 :root{
     --primary-color: #49A0EB;
     --secondary-color: #64eb49;
@@ -111,6 +113,13 @@ body{
 .expenseForm label{
     display: block;
     margin-top: 15px;
+}
+
+.errorMsg{
+    position: relative;
+    top: -15px;
+    left: 5px;
+    color: red;
 }
 
 .addExpense, .navBar button{
